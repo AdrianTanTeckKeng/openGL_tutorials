@@ -1,2 +1,3 @@
 *.opendb
 shaders_info.txt
+.vs/

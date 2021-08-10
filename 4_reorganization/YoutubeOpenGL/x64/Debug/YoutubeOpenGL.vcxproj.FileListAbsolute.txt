@@ -1,0 +1,3 @@
+C:\Projects\openGL_tutorials\2_triangle\YoutubeOpenGL\x64\Debug\YoutubeOpenGL.exe
+C:\Projects\openGL_tutorials\3_indexBuffer\YoutubeOpenGL\x64\Debug\YoutubeOpenGL.exe
+C:\Projects\openGL_tutorials\4_reorganization\YoutubeOpenGL\x64\Debug\YoutubeOpenGL.exe
