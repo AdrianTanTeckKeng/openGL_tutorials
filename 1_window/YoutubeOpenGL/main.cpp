@@ -4,40 +4,44 @@
 
 int main()
 {
-	// Initialize GLFW(a program that interfaces with OpenGL to draw windows)
+	// Initialize glfw
 	glfwInit();
 
-	// Tell GLFW version of OpenGL
+	// Pass openGL version to glfw
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-	// Create window
-	GLFWwindow* window = glfwCreateWindow(800, 800, "OpenGL", NULL, NULL);
+	// Now create a window
+	GLFWwindow* window = glfwCreateWindow(800, 800, "YoutubeGL", NULL, NULL);
+
+	// Check window is created
 	if (window == NULL)
 	{
-		std::cout << "Window fails to load." << std::endl;
+		std::cout << "Window is not created." << std::endl;
 		glfwTerminate();
 		return -1;
 	}
 
-	// Make window current context
+	//  Pass context to windows
 	glfwMakeContextCurrent(window);
 
-	// Code to render window
+	// Load glad function
 	gladLoadGL();
+
+	// Set up viewport
 	glViewport(0, 0, 800, 800);
 
+	// Render color to back buffer and swap with front buffer
 	glClearColor(0.07f, 0.11f, 0.15f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 	glfwSwapBuffers(window);
 
-	// Loop to keep window from closing
+	// Create loop to prevent window from closing prematurely.
 	while (!glfwWindowShouldClose(window))
 	{
 		glfwPollEvents();
 	}
-	// Terminate GLFW
+	glfwDestroyWindow(window);
 	glfwTerminate();
-	return 0;
 }
