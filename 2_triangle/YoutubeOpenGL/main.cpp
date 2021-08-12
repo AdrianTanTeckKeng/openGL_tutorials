@@ -75,28 +75,28 @@ int main()
 	};
 
 
-	// Next, set up VAO and VBO
-	GLuint VBO, VAO;
-
-	// Set up VAO and bind it
+	// Setting up VAO and VBO
+	// First create VAO and bind it
+	GLuint VAO;
 	glGenVertexArrays(1, &VAO);
 	glBindVertexArray(VAO);
 
-	// Set up VBO and bind it
+	// Now create VBO, bind it to GL_ARRAY_BUFFER, send in the data
+	GLuint VBO;
 	glGenBuffers(1, &VBO);
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-	
-	// Link VBO to VAO
+	glBindBuffer(GL_ARRAY_BUFFER, 0);
+
+	// Now link VAO to VBO
 	glBindBuffer(GL_ARRAY_BUFFER, VBO);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	
-	// Unbind them
+
+	// Now unbind
 	glBindVertexArray(0);
 	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	
 
 	// Set up color buffer
 	glClearColor(0.07f, 0.13f, 0.17f, 1.0f);
@@ -115,9 +115,9 @@ int main()
 	}
 
 	glfwDestroyWindow(window);
-	glDeleteShader(shaderProgram);
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
+	glDeleteProgram(shaderProgram);
 	// Termiante GLFW
 	glfwTerminate();
 	return 0;
